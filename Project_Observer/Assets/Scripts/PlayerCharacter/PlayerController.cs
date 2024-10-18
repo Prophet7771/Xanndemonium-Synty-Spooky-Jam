@@ -1,3 +1,4 @@
+using System;
 using FL;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
@@ -39,6 +40,12 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    #region Delegates
+
+    public Action<bool> OnShoot = delegate { };
+
+    #endregion
+
     #region Start Functions
 
     private void Awake()
@@ -54,7 +61,8 @@ public class PlayerController : MonoBehaviour
         playerInputs.OnFoot.Sprint.canceled += HandleSprint;
         playerInputs.OnFoot.Interact.performed += HandleInteract;
         playerInputs.OnFoot.Aim.performed += HandleAim;
-        playerInputs.OnFoot.Shoot.performed += HandleShoot;
+        playerInputs.OnFoot.Shoot.started += StartShoot;
+        playerInputs.OnFoot.Shoot.canceled += StopShoot;
 
         playerInputs.OnFoot.Escape.performed += HandleEscape;
     }
@@ -68,7 +76,8 @@ public class PlayerController : MonoBehaviour
         playerInputs.OnFoot.Sprint.canceled -= HandleSprint;
         playerInputs.OnFoot.Interact.performed -= HandleInteract;
         playerInputs.OnFoot.Aim.performed -= HandleAim;
-        playerInputs.OnFoot.Shoot.performed -= HandleShoot;
+        playerInputs.OnFoot.Shoot.started -= StartShoot;
+        playerInputs.OnFoot.Shoot.canceled -= StopShoot;
 
         playerInputs.OnFoot.Escape.performed -= HandleEscape;
     }
@@ -165,7 +174,15 @@ public class PlayerController : MonoBehaviour
 
     void HandleAim(CallbackContext ctx) { }
 
-    void HandleShoot(CallbackContext ctx) { }
+    void StartShoot(CallbackContext ctx)
+    {
+        OnShoot?.Invoke(true);
+    }
+
+    void StopShoot(CallbackContext ctx)
+    {
+        OnShoot?.Invoke(false);
+    }
 
     void HandleEscape(CallbackContext ctx)
     {
