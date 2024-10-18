@@ -89,6 +89,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""8a6582bd-085f-4e32-babb-19c7e97c59f7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +221,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2ea3415e-8aff-4051-8335-afa29395c12c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +247,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_Aim = m_OnFoot.FindAction("Aim", throwIfNotFound: true);
         m_OnFoot_Shoot = m_OnFoot.FindAction("Shoot", throwIfNotFound: true);
+        m_OnFoot_Escape = m_OnFoot.FindAction("Escape", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -295,6 +316,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_Aim;
     private readonly InputAction m_OnFoot_Shoot;
+    private readonly InputAction m_OnFoot_Escape;
     public struct OnFootActions
     {
         private @PlayerInputs m_Wrapper;
@@ -306,6 +328,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @Aim => m_Wrapper.m_OnFoot_Aim;
         public InputAction @Shoot => m_Wrapper.m_OnFoot_Shoot;
+        public InputAction @Escape => m_Wrapper.m_OnFoot_Escape;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -336,6 +359,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @Escape.started += instance.OnEscape;
+            @Escape.performed += instance.OnEscape;
+            @Escape.canceled += instance.OnEscape;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -361,6 +387,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @Escape.started -= instance.OnEscape;
+            @Escape.performed -= instance.OnEscape;
+            @Escape.canceled -= instance.OnEscape;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -387,5 +416,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
 }

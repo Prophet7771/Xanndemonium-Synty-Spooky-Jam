@@ -1,8 +1,5 @@
-using System;
-using Unity.VisualScripting;
+using FL;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Scripting.APIUpdating;
 using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerController : MonoBehaviour
@@ -58,6 +55,8 @@ public class PlayerController : MonoBehaviour
         playerInputs.OnFoot.Interact.performed += HandleInteract;
         playerInputs.OnFoot.Aim.performed += HandleAim;
         playerInputs.OnFoot.Shoot.performed += HandleShoot;
+
+        playerInputs.OnFoot.Escape.performed += HandleEscape;
     }
 
     private void OnDestroy()
@@ -70,6 +69,8 @@ public class PlayerController : MonoBehaviour
         playerInputs.OnFoot.Interact.performed -= HandleInteract;
         playerInputs.OnFoot.Aim.performed -= HandleAim;
         playerInputs.OnFoot.Shoot.performed -= HandleShoot;
+
+        playerInputs.OnFoot.Escape.performed -= HandleEscape;
     }
 
     private void OnEnable()
@@ -82,7 +83,10 @@ public class PlayerController : MonoBehaviour
         playerInputs.Disable();
     }
 
-    // void Start() { }
+    void Start()
+    {
+        MouseHandler.ToggleCursor(false);
+    }
 
     #endregion
 
@@ -162,6 +166,11 @@ public class PlayerController : MonoBehaviour
     void HandleAim(CallbackContext ctx) { }
 
     void HandleShoot(CallbackContext ctx) { }
+
+    void HandleEscape(CallbackContext ctx)
+    {
+        MouseHandler.ToggleCursor(true);
+    }
 
     #endregion
 }
