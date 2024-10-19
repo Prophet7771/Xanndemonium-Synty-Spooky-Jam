@@ -445,11 +445,56 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lantern
       objectReference: {fileID: 0}
+    - target: {fileID: 519868277015857712, guid: 0b335286fa8a17e4893a2e21a870611d,
+        type: 3}
+      propertyPath: m_Radius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959169929200155415, guid: 0b335286fa8a17e4893a2e21a870611d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959169929200155415, guid: 0b335286fa8a17e4893a2e21a870611d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.68235296
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959169929200155415, guid: 0b335286fa8a17e4893a2e21a870611d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.99607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389212372559432737, guid: 0b335286fa8a17e4893a2e21a870611d,
+        type: 3}
+      propertyPath: height
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389212372559432737, guid: 0b335286fa8a17e4893a2e21a870611d,
+        type: 3}
+      propertyPath: radius
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2796667635371605051, guid: 0b335286fa8a17e4893a2e21a870611d,
         type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 4737610251086858493}
+    - target: {fileID: 2824034510276663091, guid: 0b335286fa8a17e4893a2e21a870611d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781773800693666433, guid: 0b335286fa8a17e4893a2e21a870611d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571177836227754768, guid: 0b335286fa8a17e4893a2e21a870611d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7881279596990738995, guid: 0b335286fa8a17e4893a2e21a870611d,
         type: 3}
       propertyPath: m_LocalPosition.x
