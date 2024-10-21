@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8864573727165810749}
   - component: {fileID: 3252851415631759520}
-  - component: {fileID: 2222869978429452529}
+  - component: {fileID: 6963569939849124201}
   - component: {fileID: 6348145175823661388}
   m_Layer: 0
   m_Name: PlayerCam
@@ -275,7 +275,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2222869978429452529
+--- !u!81 &6963569939849124201
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
