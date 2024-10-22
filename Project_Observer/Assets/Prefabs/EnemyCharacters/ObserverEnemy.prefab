@@ -198,7 +198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7536515519037709224}
-  - component: {fileID: 3243428307294556415}
+  - component: {fileID: 4301471627524817534}
   - component: {fileID: 4493820206861428371}
   - component: {fileID: 6842651473213457336}
   - component: {fileID: 6785454395411580469}
@@ -226,7 +226,7 @@ Transform:
   - {fileID: 5959659150590706832}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3243428307294556415
+--- !u!114 &4301471627524817534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5560424856835887362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c2aff828b62c8148a2635e5a0d38d49, type: 3}
+  m_Script: {fileID: 11500000, guid: e7dc361a13e0b7b488019c00a7c51d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMesh: {fileID: 5354680143222011390}
@@ -258,10 +258,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.3
+  m_Height: 1.9
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.94, z: 0}
 --- !u!54 &6842651473213457336
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -299,9 +299,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4dde019cbf4eb9f4cb8527fbcffa169a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2eb022ff11432fe4f8737fc410464bb3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0

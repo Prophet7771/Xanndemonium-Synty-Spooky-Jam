@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class ObserverEnemy : MonoBehaviour
 {
     #region Variables
 
@@ -36,14 +34,14 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "LightZone")
-        {
-            Debug.Log($"OBSERVER OUTSIDE LIGHT");
-            enemyMesh.SetActive(true);
-        }
-    }
+    // void OnTriggerExit(Collider other)
+    // {
+    //     if (other.gameObject.tag == "LightZone")
+    //     {
+    //         Debug.Log($"OBSERVER OUTSIDE LIGHT");
+    //         enemyMesh.SetActive(true);
+    //     }
+    // }
 
     #endregion
 
