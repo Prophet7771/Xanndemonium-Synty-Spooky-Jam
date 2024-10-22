@@ -22,4 +22,12 @@ namespace FL
             }
         }
     }
+
+    public enum SoundEnemyType
+    {
+        Burst,
+        Moving,
+        Delayd,
+        SlowRelease,
+    }
 }
