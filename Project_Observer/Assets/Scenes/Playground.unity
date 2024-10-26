@@ -4152,6 +4152,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundBurstEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 978686514685180649, guid: 44111bec383196b4e86b83089dffb9c7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2952012737710670080, guid: 44111bec383196b4e86b83089dffb9c7,
         type: 3}
       propertyPath: m_LocalPosition.x
