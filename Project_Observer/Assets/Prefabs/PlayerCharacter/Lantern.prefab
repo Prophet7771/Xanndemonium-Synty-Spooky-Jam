@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ace70849026f647afbc1dd38387834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 15
+  height: 14
   radius: 4
   segments: 20
 --- !u!33 &1452757303356689238
@@ -271,7 +271,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.48047516, b: 0.18396229, a: 1}
   m_Intensity: 20
-  m_Range: 10
+  m_Range: 5.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

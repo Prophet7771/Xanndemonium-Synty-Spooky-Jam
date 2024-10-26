@@ -485,11 +485,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2389212372559432737, guid: 0b335286fa8a17e4893a2e21a870611d,
         type: 3}
-      propertyPath: height
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 2389212372559432737, guid: 0b335286fa8a17e4893a2e21a870611d,
-        type: 3}
       propertyPath: radius
       value: 6
       objectReference: {fileID: 0}
