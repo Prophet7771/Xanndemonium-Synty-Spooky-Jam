@@ -1,0 +1,46 @@
+# Blender MTL File: 'Theodore_lowpo_unshaded.blend'
+# Material Count: 4
+
+newmtl Eyes_baked
+Ns 575.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/thefamousrat/Documents/Blender/Projects ideas/Theodore/LowPolyFlatTheo/textures/EyesDiffuse.png
+
+newmtl Scarf_baked
+Ns 9.000004
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/thefamousrat/Documents/Blender/Projects ideas/Theodore/LowPolyFlatTheo/textures/ScarfDiffuse.png
+
+newmtl Teeth_baked
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/thefamousrat/Documents/Blender/Projects ideas/Theodore/LowPolyFlatTheo/textures/TeethDiffuse.png
+
+newmtl Theodore_baked
+Ns 9.000004
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /home/thefamousrat/Documents/Blender/Projects ideas/Theodore/LowPolyFlatTheo/textures/TheodoreDiffuse.png
