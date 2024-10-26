@@ -6,7 +6,7 @@ Avatar:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ObserverAvatar
+  m_Name: BaseEnemyAvatar
   m_AvatarSize: 14244
   m_Avatar:
     serializedVersion: 3
