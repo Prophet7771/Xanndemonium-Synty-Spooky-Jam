@@ -170,7 +170,11 @@ public class PlayerController : MonoBehaviour
         moveSpeed = ctx.ReadValue<float>() > 0 ? walkSpeed * sprintMultiplier : walkSpeed;
     }
 
-    void HandleInteract(CallbackContext ctx) { }
+    void HandleInteract(CallbackContext ctx)
+    {
+        if (PlayerCharacter.Instance.GetCurrInteractable != null)
+            PlayerCharacter.Instance.GetCurrInteractable.Interact();
+    }
 
     void HandleAim(CallbackContext ctx) { }
 
