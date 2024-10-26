@@ -60,16 +60,12 @@ public class StalkerEnemy : BaseEnemy
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger Enter");
-
         if (other.gameObject.tag == "LightZone")
             ToggleEnemy(true);
     }
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("Trigger Exit");
-
         if (other.gameObject.tag == "LightZone")
             ToggleEnemy(false);
     }
@@ -101,6 +97,8 @@ public class StalkerEnemy : BaseEnemy
 
     void ToggleEnemy(bool value)
     {
+        exposed = value;
+
         if (value)
         {
             Debug.Log($"STALKER IN LIGHT");
@@ -108,33 +106,33 @@ public class StalkerEnemy : BaseEnemy
             enemyMesh.SetActive(false);
             decoyMesh.SetActive(true);
 
-            animator.SetBool("frozen", !exposed);
+            animator.SetBool("frozen", exposed);
+            animator.SetBool("startedWalking", !exposed);
+
             canFollow = false;
         }
         else
         {
-            Debug.Log($"STALKER OUT OF LIGHT");
-
-            decoyMesh.SetActive(false);
-            enemyMesh.SetActive(true);
-
-            animator.SetBool("frozen", !exposed);
-            canFollow = true;
+            ToggleEnemyOff(0);
         }
     }
 
-    void TriggerToggle() => ToggleEnemyOff();
+    void TriggerToggle() => ToggleEnemyOff(500);
 
-    async void ToggleEnemyOff()
+    async void ToggleEnemyOff(int delay)
     {
-        await Task.Delay(800);
+        await Task.Delay(delay);
+
+        exposed = false;
 
         Debug.Log($"Light Turned Off");
 
         decoyMesh.SetActive(false);
         enemyMesh.SetActive(true);
 
-        animator.SetBool("frozen", !exposed);
+        animator.SetBool("frozen", exposed);
+        animator.SetBool("startedWalking", !exposed);
+
         canFollow = true;
     }
 
