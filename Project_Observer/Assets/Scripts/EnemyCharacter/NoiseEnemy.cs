@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using FL;
 using UnityEngine;
 
-public class NoiseEnemy : MonoBehaviour
+public class NoiseEnemy : BaseEnemy
 {
     #region Variables
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ObserverEnemy : MonoBehaviour
+public class ObserverEnemy : BaseEnemy
 {
     #region Variables
 
@@ -19,7 +19,10 @@ public class ObserverEnemy : MonoBehaviour
 
     #region Update Functions
 
-    void Update() { }
+    void Update()
+    {
+        FollowPlayer();
+    }
 
     #endregion
 
