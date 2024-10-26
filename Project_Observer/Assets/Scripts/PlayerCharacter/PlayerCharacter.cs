@@ -20,6 +20,9 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField]
     Camera playerCam;
 
+    [SerializeField]
+    public SanitySystem sanity;
+
     [Header("Raycast Data"), SerializeField]
     float rayDistance = 10f;
     Ray pointerRay;
@@ -37,6 +40,11 @@ public class PlayerCharacter : MonoBehaviour
     public Interactable GetCurrInteractable
     {
         get { return currInteractable; }
+    }
+
+    public Camera GetPlayerCam
+    {
+        get { return playerCam; }
     }
 
     #endregion
