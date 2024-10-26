@@ -681,7 +681,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -3936,7 +3936,7 @@ PrefabInstance:
     - target: {fileID: 2119128981196794840, guid: 3ca7ccdb97171f149a16d80639afa234,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3.04
       objectReference: {fileID: 0}
     - target: {fileID: 2119128981196794840, guid: 3ca7ccdb97171f149a16d80639afa234,
         type: 3}
@@ -3946,7 +3946,7 @@ PrefabInstance:
     - target: {fileID: 2119128981196794840, guid: 3ca7ccdb97171f149a16d80639afa234,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 2119128981196794840, guid: 3ca7ccdb97171f149a16d80639afa234,
         type: 3}
@@ -3992,6 +3992,11 @@ PrefabInstance:
         type: 3}
       propertyPath: height
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945357663780002193, guid: 3ca7ccdb97171f149a16d80639afa234,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4083,6 +4088,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StalkerEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695917893405006528, guid: 9bc4bfb12a8127a41bb163b145bc1c1e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7727404676640884879, guid: 9bc4bfb12a8127a41bb163b145bc1c1e,
         type: 3}

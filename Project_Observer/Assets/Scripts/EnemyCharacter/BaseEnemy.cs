@@ -7,7 +7,7 @@ public class BaseEnemy : MonoBehaviour
     #region Variables
 
     [Header("Parent Data"), SerializeField]
-    protected GameObject playerObject;
+    // protected GameObject playerObject;
     protected float psycheDamage = 20f;
     protected bool canFollow = false;
 
@@ -15,10 +15,15 @@ public class BaseEnemy : MonoBehaviour
 
     #region Start Functions
 
-    private void OnEnable()
-    {
-        // playerObject = PlayerController.Instance.gameObject;
-    }
+    // private void Awake()
+    // {
+    //     playerObject = PlayerCharacter.Instance.gameObject;
+    // }
+
+    // private void OnEnable()
+    // {
+    //     playerObject = PlayerCharacter.Instance.gameObject;
+    // }
 
     #endregion
 
@@ -30,11 +35,20 @@ public class BaseEnemy : MonoBehaviour
 
     #region Base Functions
 
-    void DoDamage() { }
+    protected void DoDamage() { }
+
+    protected virtual void LookAtPlayer()
+    {
+        if (!PlayerCharacter.Instance)
+            return;
+
+        transform.LookAt(PlayerCharacter.Instance.transform.position);
+    }
 
     protected virtual void FollowPlayer()
     {
-        transform.LookAt(playerObject.transform.position);
+        if (!PlayerCharacter.Instance)
+            return;
     }
 
     #endregion

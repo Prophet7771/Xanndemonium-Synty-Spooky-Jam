@@ -21,7 +21,7 @@ public class ObserverEnemy : BaseEnemy
 
     void Update()
     {
-        FollowPlayer();
+        LookAtPlayer();
     }
 
     #endregion
