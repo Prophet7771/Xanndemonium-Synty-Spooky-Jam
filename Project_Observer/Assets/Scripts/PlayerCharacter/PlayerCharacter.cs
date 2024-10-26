@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,15 @@ public class PlayerCharacter : MonoBehaviour
 
     [Header("Player Controller")]
     PlayerController playerController;
+
+    #endregion
+
+    #region Delegates
+
+    public static Action OnSpotlightTurnedOff = delegate()
+    {
+        Debug.Log($"Spotlight OFF");
+    };
 
     #endregion
 

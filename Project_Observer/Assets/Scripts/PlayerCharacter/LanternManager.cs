@@ -42,6 +42,9 @@ public class LanternManager : MonoBehaviour
 
     public void ToggleSpotlight(bool value)
     {
+        if (value == false)
+            PlayerCharacter.OnSpotlightTurnedOff?.Invoke();
+
         animator.SetBool("toggleSpotlight", value);
     }
 
