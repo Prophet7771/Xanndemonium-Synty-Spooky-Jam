@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using FL;
 using UnityEngine;
 
@@ -50,14 +51,25 @@ public class NoiseEnemy : MonoBehaviour
         switch (soundEnemyType)
         {
             case SoundEnemyType.Burst:
-                audioSource.spatialBlend = 0;
+                audioSource.minDistance = 2f;
+                audioSource.maxDistance = 3.5f;
+
+                audioSource.clip = burstClips[Random.Range(0, burstClips.Count)];
+
+                audioSource.spatialBlend = 1;
                 audioSource.loop = false;
                 audioSource.Play();
+                // DestroySoundAfterDelay(2);
                 break;
             case SoundEnemyType.Moving:
-                audioSource.clip = movingClips[Random.Range(0, burstClips.Count)];
+                audioSource.minDistance = 2f;
+                audioSource.maxDistance = 3.5f;
+
+                audioSource.clip = movingClips[Random.Range(0, movingClips.Count)];
+
                 audioSource.loop = true;
                 audioSource.Play();
+                DestroySoundAfterDelay(6);
                 break;
             case SoundEnemyType.Delayd:
                 break;
@@ -66,6 +78,12 @@ public class NoiseEnemy : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    async void DestroySoundAfterDelay(int delay)
+    {
+        await Task.Delay(delay * 1000);
+        Destroy(gameObject);
     }
 
     #endregion
