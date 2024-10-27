@@ -269,13 +269,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCam: {fileID: 3252851415631759520}
   sanity: {fileID: 7562359613661919040}
-  sanityHealAmount: 4
-  sanityDrainAmount: 2
+  sanityHealAmount: 2
+  sanityDrainAmount: 4
   rayDistance: 2
   interactionMessage: {fileID: 4409417892612244021}
   breathSrc: {fileID: 3075987309649028535}
   lantern: {fileID: 5625534868183633620}
   teddyBear: {fileID: 2337495871055508065}
+  isTeddyPickedUp: 0
 --- !u!114 &4737610251086858493
 MonoBehaviour:
   m_ObjectHideFlags: 0

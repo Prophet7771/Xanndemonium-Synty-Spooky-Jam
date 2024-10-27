@@ -24,11 +24,9 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField]
     public SanitySystem sanity;
 
-    [SerializeField]
-    float sanityHealAmount = 4f;
+    public float sanityHealAmount = 4f;
+    public float sanityDrainAmount = 2f;
 
-    [SerializeField]
-    float sanityDrainAmount = 2f;
     bool isInLargeLightSrc = false;
 
     [Header("Raycast Data"), SerializeField]
@@ -127,8 +125,11 @@ public class PlayerCharacter : MonoBehaviour
 
             if (isInLargeLightSrc)
                 StartSanityHeal(sanityHealAmount);
-            // else
-            //     StartSanityDrain(sanityDrainAmount);
+            else
+            {
+                StartSanityHeal(sanityHealAmount);
+                StartSanityDrain(sanityDrainAmount);
+            }
         }
         else
         {

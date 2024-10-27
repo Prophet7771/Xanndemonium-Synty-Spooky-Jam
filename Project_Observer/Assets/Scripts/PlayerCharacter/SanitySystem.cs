@@ -88,7 +88,7 @@ public class SanitySystem : MonoBehaviour
 
     public void HealSanity(float value)
     {
-        if (currentSanity + value < maxSanity)
+        if (currentSanity + value > maxSanity)
             currentSanity = maxSanity;
         else
             currentSanity += value;

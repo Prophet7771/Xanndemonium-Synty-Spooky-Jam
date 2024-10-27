@@ -43,7 +43,14 @@ public class LanternManager : MonoBehaviour
     public void ToggleSpotlight(bool value)
     {
         if (value == false)
+        {
             PlayerCharacter.OnSpotlightTurnedOff?.Invoke();
+            PlayerCharacter.Instance.StopSanityDrain();
+        }
+        else
+        {
+            PlayerCharacter.Instance.StartSanityDrain(PlayerCharacter.Instance.sanityDrainAmount);
+        }
 
         animator.SetBool("toggleSpotlight", value);
     }
