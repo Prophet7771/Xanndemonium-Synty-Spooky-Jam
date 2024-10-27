@@ -23,6 +23,24 @@ namespace FL
         }
     }
 
+    public static class QuestLibrary
+    {
+        public static bool CheckQuestPreReq(Interactable questItem)
+        {
+            int linkCount = 0;
+
+            foreach (var item in questItem.quest.preReqQuests)
+            {
+                if (item.quest.QuestCompleted)
+                {
+                    linkCount++;
+                }
+            }
+
+            return linkCount == questItem.quest.preReqQuests.Count;
+        }
+    }
+
     public enum SoundEnemyType
     {
         Burst,
