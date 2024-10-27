@@ -98,6 +98,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchWeapons"",
+                    ""type"": ""Button"",
+                    ""id"": ""b2348270-e3ac-4466-943e-708afadaa061"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,6 +241,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26698910-964c-4bdd-a530-3e2b2a74eba8"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -248,6 +268,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_OnFoot_Aim = m_OnFoot.FindAction("Aim", throwIfNotFound: true);
         m_OnFoot_Shoot = m_OnFoot.FindAction("Shoot", throwIfNotFound: true);
         m_OnFoot_Escape = m_OnFoot.FindAction("Escape", throwIfNotFound: true);
+        m_OnFoot_SwitchWeapons = m_OnFoot.FindAction("SwitchWeapons", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +338,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Aim;
     private readonly InputAction m_OnFoot_Shoot;
     private readonly InputAction m_OnFoot_Escape;
+    private readonly InputAction m_OnFoot_SwitchWeapons;
     public struct OnFootActions
     {
         private @PlayerInputs m_Wrapper;
@@ -329,6 +351,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_OnFoot_Aim;
         public InputAction @Shoot => m_Wrapper.m_OnFoot_Shoot;
         public InputAction @Escape => m_Wrapper.m_OnFoot_Escape;
+        public InputAction @SwitchWeapons => m_Wrapper.m_OnFoot_SwitchWeapons;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -362,6 +385,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Escape.started += instance.OnEscape;
             @Escape.performed += instance.OnEscape;
             @Escape.canceled += instance.OnEscape;
+            @SwitchWeapons.started += instance.OnSwitchWeapons;
+            @SwitchWeapons.performed += instance.OnSwitchWeapons;
+            @SwitchWeapons.canceled += instance.OnSwitchWeapons;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -390,6 +416,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Escape.started -= instance.OnEscape;
             @Escape.performed -= instance.OnEscape;
             @Escape.canceled -= instance.OnEscape;
+            @SwitchWeapons.started -= instance.OnSwitchWeapons;
+            @SwitchWeapons.performed -= instance.OnSwitchWeapons;
+            @SwitchWeapons.canceled -= instance.OnSwitchWeapons;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -417,5 +446,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
+        void OnSwitchWeapons(InputAction.CallbackContext context);
     }
 }

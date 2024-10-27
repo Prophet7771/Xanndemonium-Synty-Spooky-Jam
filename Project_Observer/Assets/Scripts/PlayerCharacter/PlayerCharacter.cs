@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
@@ -23,6 +24,13 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField]
     public SanitySystem sanity;
 
+    [SerializeField]
+    float sanityHealAmount = 4f;
+
+    [SerializeField]
+    float sanityDrainAmount = 2f;
+    bool isInLargeLightSrc = false;
+
     [Header("Raycast Data"), SerializeField]
     float rayDistance = 10f;
     Ray pointerRay;
@@ -37,6 +45,14 @@ public class PlayerCharacter : MonoBehaviour
 
     [Header("Audio Data"), SerializeField]
     AudioSource breathSrc;
+
+    [Header("Weapon System"), SerializeField]
+    GameObject lantern;
+
+    [SerializeField]
+    GameObject teddyBear;
+
+    public bool isTeddyPickedUp = false;
 
     #region Properties
 
@@ -98,6 +114,33 @@ public class PlayerCharacter : MonoBehaviour
     #endregion
 
     #region Base Functions
+
+    public void SwitchWeapons()
+    {
+        if (!isTeddyPickedUp)
+            return;
+
+        if (lantern.activeSelf)
+        {
+            lantern.SetActive(false);
+            teddyBear.SetActive(true);
+
+            if (isInLargeLightSrc)
+                StartSanityHeal(sanityHealAmount);
+            // else
+            //     StartSanityDrain(sanityDrainAmount);
+        }
+        else
+        {
+            teddyBear.SetActive(false);
+            lantern.SetActive(true);
+
+            StopSanityHeal();
+            StopSanityDrain();
+        }
+    }
+
+    public void PickupTeddy() => isTeddyPickedUp = true;
 
     #region Sanity Functions
 
@@ -179,6 +222,8 @@ public class PlayerCharacter : MonoBehaviour
     {
         interactionMessage.gameObject.SetActive(value);
     }
+
+    public void ClearInteractMessage() => interactionMessage.text = "";
 
     #endregion
 

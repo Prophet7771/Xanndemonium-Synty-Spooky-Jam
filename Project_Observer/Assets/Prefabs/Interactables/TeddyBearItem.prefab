@@ -12,7 +12,52 @@ PrefabInstance:
         type: 3}
       propertyPath: outline
       value: 
-      objectReference: {fileID: 4931926459340898510}
+      objectReference: {fileID: 4356055935665722466}
+    - target: {fileID: 1002241028829963866, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
+        type: 3}
+      propertyPath: quest.QuestName
+      value: Teddy Bear
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002241028829963866, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
+        type: 3}
+      propertyPath: quest.preReqQuests.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002241028829963866, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
+        type: 3}
+      propertyPath: quest.preReqQuests.Array.data[0]
+      value: 
+      objectReference: {fileID: 1854897315413648252}
+    - target: {fileID: 1002241028829963866, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
+        type: 3}
+      propertyPath: quest.CompleteEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002241028829963866, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
+        type: 3}
+      propertyPath: quest.CompleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002241028829963866, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
+        type: 3}
+      propertyPath: quest.CompleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002241028829963866, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
+        type: 3}
+      propertyPath: quest.CompleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PickupTeddy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002241028829963866, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
+        type: 3}
+      propertyPath: quest.CompleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerCharacter, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002241028829963866, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
+        type: 3}
+      propertyPath: quest.CompleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1261797919071431231, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
         type: 3}
       propertyPath: m_IsActive
@@ -112,6 +157,18 @@ PrefabInstance:
       addedObject: {fileID: 1096063823613086121}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab1de6ed5510fc745ae9dab3b9aaa98d, type: 3}
+--- !u!114 &1854897315413648252 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1002241028829963866, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1465156006478939430}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf99353d3e1d0f048b6ede4624a4dfd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7391900319844254755 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8268619418152255749, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
@@ -201,6 +258,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1770988165061345293}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4356055935665722466 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2657125502781838447, guid: 4719954a59fd33244a1e06106f519d33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1770988165061345293}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6587646909754040748 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4899869856300655009, guid: 4719954a59fd33244a1e06106f519d33,

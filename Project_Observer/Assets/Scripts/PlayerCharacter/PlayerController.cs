@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
         playerInputs.OnFoot.Aim.performed += HandleAim;
         playerInputs.OnFoot.Shoot.started += StartShoot;
         playerInputs.OnFoot.Shoot.canceled += StopShoot;
+        playerInputs.OnFoot.SwitchWeapons.performed += HandleWeaponSwitch;
 
         playerInputs.OnFoot.Escape.performed += HandleEscape;
     }
@@ -78,6 +79,7 @@ public class PlayerController : MonoBehaviour
         playerInputs.OnFoot.Aim.performed -= HandleAim;
         playerInputs.OnFoot.Shoot.started -= StartShoot;
         playerInputs.OnFoot.Shoot.canceled -= StopShoot;
+        playerInputs.OnFoot.SwitchWeapons.performed -= HandleWeaponSwitch;
 
         playerInputs.OnFoot.Escape.performed -= HandleEscape;
     }
@@ -192,6 +194,8 @@ public class PlayerController : MonoBehaviour
     {
         MouseHandler.ToggleCursor(true);
     }
+
+    void HandleWeaponSwitch(CallbackContext ctx) => PlayerCharacter.Instance.SwitchWeapons();
 
     #endregion
 }
