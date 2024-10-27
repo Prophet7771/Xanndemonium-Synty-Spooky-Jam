@@ -10,6 +10,9 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     string interactionMessage = "Press 'E' to interact";
 
+    [SerializeField]
+    bool turnOffAfterInteract = true;
+
     [Header("VFX")]
     [SerializeField]
     Outline outline;
@@ -60,7 +63,16 @@ public class Interactable : MonoBehaviour
         if (!FL.QuestLibrary.CheckQuestPreReq(this))
             return;
 
-        gameObject.SetActive(false);
+        if (turnOffAfterInteract)
+            gameObject.SetActive(false);
+        else
+        {
+            interactionMessage = "";
+            this.enabled = false;
+            outline.OutlineMode = Outline.Mode.OutlineHidden;
+            outline.enabled = false;
+        }
+
         PlayerCharacter.Instance.ClearInteractMessage();
         // Invoke("DestroySelf", 2f);
     }
@@ -73,6 +85,9 @@ public class Interactable : MonoBehaviour
 
     public void HoverVisual(bool val)
     {
+        if (!this.enabled)
+            return;
+
         outline.OutlineMode = Outline.Mode.OutlineAll;
 
         if (val)
@@ -83,6 +98,9 @@ public class Interactable : MonoBehaviour
 
     public void HoverVisual(bool val, bool canInteract)
     {
+        if (!this.enabled)
+            return;
+
         outline.OutlineMode = Outline.Mode.OutlineAll;
 
         if (val)

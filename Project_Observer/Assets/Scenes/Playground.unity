@@ -4630,6 +4630,11 @@ PrefabInstance:
       propertyPath: quest.QuestName
       value: Interactable Parent
       objectReference: {fileID: 0}
+    - target: {fileID: 1002241028829963866, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
+        type: 3}
+      propertyPath: turnOffAfterInteract
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3563885458760578931, guid: ab1de6ed5510fc745ae9dab3b9aaa98d,
         type: 3}
       propertyPath: m_Name
