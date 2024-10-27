@@ -238,6 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7dc361a13e0b7b488019c00a7c51d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  psycheDamage: 6
+  maxDistanceFromPlayer: 30
   enemyMesh: {fileID: 5354680143222011390}
 --- !u!136 &4493820206861428371
 CapsuleCollider:

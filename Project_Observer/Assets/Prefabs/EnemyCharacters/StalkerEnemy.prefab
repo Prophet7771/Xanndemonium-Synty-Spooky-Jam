@@ -578,9 +578,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20707a6efe94e474d84385d003963a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  psycheDamage: 20
+  psycheDamage: 8
+  maxDistanceFromPlayer: 30
   enemyMesh: {fileID: 4951260556108082674}
   decoyMesh: {fileID: 2141300230839356529}
+  scaledDamage: 0
   animator: {fileID: 7436549342720530707}
 --- !u!136 &2795390863411807819
 CapsuleCollider:
