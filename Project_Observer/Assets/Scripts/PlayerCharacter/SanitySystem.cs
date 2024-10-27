@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class SanitySystem : MonoBehaviour
 {
@@ -11,16 +12,19 @@ public class SanitySystem : MonoBehaviour
     [Header("Sanity System")]
     float maxSanity = 100; // This is for when we restore sanity
 
-    [SerializeField]
+    [SerializeField, Range(0, 100)]
     float currentSanity = 100;
 
+    // PostProcessVolume sanityVolume;
+
     [SerializeField]
-    PostProcessVolume sanityVolume;
+    Volume sanityVolume;
     Vignette vignette;
 
     [Header("Damage Over Time")]
     Coroutine damageCoroutine; // To keep track of the DoT coroutine
-    public float interval = 1f; // Time between each damage tick
+    public float dotInterval = 1f; // Time between each damage tick
+    public float sanityLerpInterval = 2.0f; // Time for sanity to drop
 
     [Header("UI Components")]
     Image sanityMeter;
@@ -31,7 +35,16 @@ public class SanitySystem : MonoBehaviour
 
     private void Awake()
     {
-        sanityVolume.profile.TryGetSettings<Vignette>(out vignette);
+        sanityVolume.profile.TryGet<Vignette>(out vignette);
+    }
+
+    private void Start()
+    {
+        if (sanityVolume != null || vignette != null)
+        {
+            sanityVolume.enabled = false;
+            sanityVolume.enabled = true;
+        }
     }
 
     #endregion
@@ -40,17 +53,36 @@ public class SanitySystem : MonoBehaviour
 
     private void Update()
     {
-        vignette.enabled.Override(true);
-        vignette.intensity.value = 1 - Mathf.Clamp01(currentSanity / 100f);
+        if (vignette == null)
+            sanityVolume.profile.TryGet<Vignette>(out vignette);
+
+        float targetIntensity = 1 - Mathf.Clamp01(currentSanity / 100f);
+
+        vignette.intensity.value = Mathf.Lerp(
+            vignette.intensity.value,
+            targetIntensity,
+            Time.deltaTime * sanityLerpInterval
+        );
     }
 
     #endregion
 
     #region Base Functions
 
+    public void HealSanity(float value)
+    {
+        if (currentSanity + value < maxSanity)
+            currentSanity = maxSanity;
+        else
+            currentSanity += value;
+    }
+
     public void DamageSanity(float value)
     {
-        currentSanity -= value;
+        if (currentSanity - value < 0)
+            currentSanity = 0;
+        else
+            currentSanity -= value;
     }
 
     public void StartSanityDrain(float value)
@@ -72,7 +104,7 @@ public class SanitySystem : MonoBehaviour
             DamageSanity(value);
 
             // Wait for the interval before applying damage again
-            yield return new WaitForSeconds(interval);
+            yield return new WaitForSeconds(dotInterval);
         }
     }
 
