@@ -16,6 +16,9 @@ public class Interactable : MonoBehaviour
 
     PlayerInput inputAction;
 
+    [Space(10)]
+    public QuestSystem.QuestItem quest;
+
     #endregion
 
     #region Getters & Setters
@@ -52,9 +55,14 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
+        QuestSystem.Instance.CompleteQuest(this);
+
+        if (!FL.QuestLibrary.CheckQuestPreReq(this))
+            return;
+
         gameObject.SetActive(false);
-        PlayerCharacter.Instance.ToggleInteractMessage(false);
-        Invoke("DestroySelf", 2f);
+        PlayerCharacter.Instance.ClearInteractMessage();
+        // Invoke("DestroySelf", 2f);
     }
 
     private void DestroySelf() => Destroy(gameObject);
