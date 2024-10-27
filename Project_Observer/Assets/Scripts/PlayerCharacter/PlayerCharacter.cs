@@ -35,6 +35,9 @@ public class PlayerCharacter : MonoBehaviour
     [Header("UI Componenets")]
     public TMP_Text interactionMessage;
 
+    [Header("Audio Data"), SerializeField]
+    AudioSource breathSrc;
+
     #region Properties
 
     public Interactable GetCurrInteractable
@@ -89,11 +92,35 @@ public class PlayerCharacter : MonoBehaviour
         didPointerHit = Physics.Raycast(pointerRay, out hit, rayDistance);
 
         HandleInteraction();
+        MatchBreathing();
     }
 
     #endregion
 
     #region Base Functions
+
+    #region Sanity Functions
+
+    public void StartSanityDrain(float value) => sanity.StartSanityDrain(value);
+
+    public void StartSanityHeal(float value) => sanity.StartSanityHeal(value);
+
+    public void StopSanityDrain() => sanity.StopSanityDrain();
+
+    public void StopSanityHeal() => sanity.StopSanityHeal();
+
+    public void HealSanity(float value) => sanity.HealSanity(value);
+
+    public void DamageSanity(float value) => sanity.DamageSanity(value);
+
+    void MatchBreathing()
+    {
+        float targetVolume = 1 - Mathf.Clamp01(sanity.GetCurrentSanity / 100f);
+
+        breathSrc.volume = Mathf.Lerp(breathSrc.volume, targetVolume, Time.deltaTime * 2f);
+    }
+
+    #endregion
 
     private void HandleInteraction()
     {

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class ObserverEnemy : BaseEnemy
@@ -13,7 +14,10 @@ public class ObserverEnemy : BaseEnemy
 
     #region Start Functions
 
-    void Start() { }
+    void Start()
+    {
+        StartSanityDrain(1500);
+    }
 
     #endregion
 
@@ -22,6 +26,7 @@ public class ObserverEnemy : BaseEnemy
     void Update()
     {
         LookAtPlayer();
+        DistanceCheck();
     }
 
     #endregion
@@ -34,6 +39,7 @@ public class ObserverEnemy : BaseEnemy
         {
             Debug.Log($"OBSERVER IN LIGHT");
             enemyMesh.SetActive(false);
+            StopSanityDrain();
         }
     }
 

@@ -32,6 +32,11 @@ public class NoiseEnemy : BaseEnemy
         PlayEnemySound();
     }
 
+    private void Start()
+    {
+        DamageSanity();
+    }
+
     #endregion
 
     #region Update Functions

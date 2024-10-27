@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -23,11 +24,25 @@ public class SanitySystem : MonoBehaviour
 
     [Header("Damage Over Time")]
     Coroutine damageCoroutine; // To keep track of the DoT coroutine
+    Coroutine healCoroutine; // To keep track of the DoT coroutine
     public float dotInterval = 1f; // Time between each damage tick
+    public float hotInterval = 1f; // Time between each heal tick
     public float sanityLerpInterval = 2.0f; // Time for sanity to drop
 
     [Header("UI Components")]
     Image sanityMeter;
+
+    [SerializeField]
+    TMP_Text sanityTextValue;
+
+    #endregion
+
+    #region Properties
+
+    public float GetCurrentSanity
+    {
+        get { return currentSanity; }
+    }
 
     #endregion
 
@@ -53,6 +68,8 @@ public class SanitySystem : MonoBehaviour
 
     private void Update()
     {
+        sanityTextValue.text = currentSanity.ToString();
+
         if (vignette == null)
             sanityVolume.profile.TryGet<Vignette>(out vignette);
 
@@ -87,13 +104,32 @@ public class SanitySystem : MonoBehaviour
 
     public void StartSanityDrain(float value)
     {
-        damageCoroutine = StartCoroutine(ApplyDoT(value));
+        if (damageCoroutine == null)
+            damageCoroutine = StartCoroutine(ApplyDoT(value));
+    }
+
+    public void StartSanityHeal(float value)
+    {
+        if (healCoroutine == null)
+            healCoroutine = StartCoroutine(ApplyHoT(value));
     }
 
     public void StopSanityDrain()
     {
+        if (damageCoroutine == null)
+            return;
+
         StopCoroutine(damageCoroutine);
         damageCoroutine = null;
+    }
+
+    public void StopSanityHeal()
+    {
+        if (healCoroutine == null)
+            return;
+
+        StopCoroutine(healCoroutine);
+        healCoroutine = null;
     }
 
     private IEnumerator ApplyDoT(float value)
@@ -105,6 +141,18 @@ public class SanitySystem : MonoBehaviour
 
             // Wait for the interval before applying damage again
             yield return new WaitForSeconds(dotInterval);
+        }
+    }
+
+    private IEnumerator ApplyHoT(float value)
+    {
+        while (true) // Continuously apply damage while in trigger
+        {
+            // Apply damage logic here
+            HealSanity(value);
+
+            // Wait for the interval before applying damage again
+            yield return new WaitForSeconds(hotInterval);
         }
     }
 

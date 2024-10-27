@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class BaseEnemy : MonoBehaviour
@@ -8,8 +9,11 @@ public class BaseEnemy : MonoBehaviour
 
     [Header("Parent Data"), SerializeField]
     // protected GameObject playerObject;
-    protected float psycheDamage = 20f;
+    protected float psycheDamage = 2f;
+    protected float psycheDamageRange = 30f;
     protected bool canFollow = false;
+    public float maxDistanceFromPlayer = 30f;
+    protected float currDistanceFromPlayer;
 
     #endregion
 
@@ -30,12 +34,14 @@ public class BaseEnemy : MonoBehaviour
     #region Update Functions
 
 
-
     #endregion
 
     #region Base Functions
 
-    protected void DoDamage() { }
+    protected void DamageSanity()
+    {
+        PlayerCharacter.Instance.DamageSanity(psycheDamage);
+    }
 
     protected virtual void LookAtPlayer()
     {
@@ -49,6 +55,30 @@ public class BaseEnemy : MonoBehaviour
     {
         if (!PlayerCharacter.Instance)
             return;
+    }
+
+    protected virtual async void StartSanityDrain(int delay = 0)
+    {
+        await Task.Delay(delay);
+
+        PlayerCharacter.Instance.StartSanityDrain(psycheDamage);
+    }
+
+    protected void StopSanityDrain() => PlayerCharacter.Instance.StopSanityDrain();
+
+    protected void DistanceCheck()
+    {
+        currDistanceFromPlayer = Vector3.Distance(
+            transform.position,
+            PlayerCharacter.Instance.transform.position
+        );
+
+        if (currDistanceFromPlayer > maxDistanceFromPlayer)
+        {
+            StopSanityDrain();
+            Debug.Log("Enemy Out Of Range!");
+            Destroy(gameObject);
+        }
     }
 
     #endregion

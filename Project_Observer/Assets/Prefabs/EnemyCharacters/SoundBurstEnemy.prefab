@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae0fe16c1fc58f2429339e21243fb1a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
+  psycheDamage: 10
+  maxDistanceFromPlayer: 30
   soundEnemyType: 0
   moveSpeed: 10
   audioSource: {fileID: 7005944699474670835}
