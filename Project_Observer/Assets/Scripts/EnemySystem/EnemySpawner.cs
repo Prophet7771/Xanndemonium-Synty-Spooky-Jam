@@ -1,10 +1,15 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab; // The enemy to spawn
+    #region Variables
+
+    [SerializeField]
+    List<GameObject> enemiesList;
+    GameObject enemyPrefab; // The enemy to spawn
     public Transform player; // Player's transform
     public float minSpawnDistance = 5f;
     public float maxSpawnDistance = 15f;
@@ -13,10 +18,23 @@ public class EnemySpawner : MonoBehaviour
 
     private GameObject currentEnemy;
 
+    #endregion
+
+    #region Start Functions
+
+    private void Awake()
+    {
+        player = PlayerCharacter.Instance.transform;
+    }
+
     void Start()
     {
         SpawnEnemyAsync();
     }
+
+    #endregion
+
+    #region Base Functions
 
     async void SpawnEnemyAsync()
     {
@@ -32,6 +50,8 @@ public class EnemySpawner : MonoBehaviour
                 // Try to find a random spawn position near the player on the NavMesh
                 if (FindSpawnPosition(out Vector3 spawnPosition))
                 {
+                    enemyPrefab = enemiesList[Random.Range(0, enemiesList.Count - 1)];
+
                     // Spawn the enemy and assign it to currentEnemy
                     currentEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
                 }
@@ -66,4 +86,6 @@ public class EnemySpawner : MonoBehaviour
         spawnPosition = Vector3.zero;
         return false;
     }
+
+    #endregion
 }
