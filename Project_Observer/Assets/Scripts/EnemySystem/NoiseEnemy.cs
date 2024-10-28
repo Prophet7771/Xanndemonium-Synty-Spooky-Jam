@@ -45,6 +45,11 @@ public class NoiseEnemy : BaseEnemy
     {
         if (soundEnemyType == SoundEnemyType.Moving)
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+
+        if (!audioSource.isPlaying)
+            enemyDead = true;
+
+        DistanceCheck();
     }
 
     #endregion

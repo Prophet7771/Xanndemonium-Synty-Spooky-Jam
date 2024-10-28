@@ -15,6 +15,8 @@ public class BaseEnemy : MonoBehaviour
     public float maxDistanceFromPlayer = 30f;
     protected float currDistanceFromPlayer;
 
+    public bool enemyDead = false;
+
     #endregion
 
     #region Start Functions
@@ -77,7 +79,9 @@ public class BaseEnemy : MonoBehaviour
         {
             StopSanityDrain();
             Debug.Log("Enemy Out Of Range!");
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            enemyDead = true;
+            // Destroy(gameObject);
         }
     }
 

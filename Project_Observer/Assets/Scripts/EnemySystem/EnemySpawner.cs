@@ -16,19 +16,23 @@ public class EnemySpawner : MonoBehaviour
     public float minSpawnInterval = 3000f; // milliseconds
     public float maxSpawnInterval = 10000f; // milliseconds
 
+    float spawnChance = 50f; // Percentage chance of spawning an enemy
+
+    [SerializeField]
     private GameObject currentEnemy;
+
+    BaseEnemy enemy;
 
     #endregion
 
     #region Start Functions
 
-    private void Awake()
-    {
-        player = PlayerCharacter.Instance.transform;
-    }
+    private void Awake() { }
 
     void Start()
     {
+        player = PlayerCharacter.Instance.transform;
+
         SpawnEnemyAsync();
     }
 
@@ -40,20 +44,36 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
+            if (enemy != null)
+                if (enemy.enemyDead)
+                {
+                    Destroy(currentEnemy);
+                    enemy = null;
+                }
+
             // Wait for a random interval using Task.Delay
             int interval = Random.Range((int)minSpawnInterval, (int)maxSpawnInterval);
+
             await Task.Delay(interval);
 
+            if (!ShouldSpawn())
+            {
+                Debug.Log("Spawn Chance SKIP!.");
+            }
             // Check if there is no active enemy
-            if (currentEnemy == null)
+            else if (currentEnemy == null)
             {
                 // Try to find a random spawn position near the player on the NavMesh
                 if (FindSpawnPosition(out Vector3 spawnPosition))
                 {
-                    enemyPrefab = enemiesList[Random.Range(0, enemiesList.Count - 1)];
+                    enemyPrefab = enemiesList[Random.Range(0, enemiesList.Count)];
 
                     // Spawn the enemy and assign it to currentEnemy
                     currentEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+
+                    enemy = currentEnemy.GetComponent<BaseEnemy>();
+
+                    Debug.Log("SPAWNED ENEMY!");
                 }
             }
         }
@@ -85,6 +105,13 @@ public class EnemySpawner : MonoBehaviour
 
         spawnPosition = Vector3.zero;
         return false;
+    }
+
+    bool ShouldSpawn()
+    {
+        // Generate a random number and check if it's within the spawnChance
+        float randomValue = Random.Range(0f, 100f);
+        return randomValue <= spawnChance;
     }
 
     #endregion

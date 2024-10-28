@@ -39,6 +39,7 @@ public class ObserverEnemy : BaseEnemy
         {
             Debug.Log($"OBSERVER IN LIGHT");
             enemyMesh.SetActive(false);
+            enemyDead = true;
             StopSanityDrain();
         }
     }
